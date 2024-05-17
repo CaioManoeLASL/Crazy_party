@@ -1,9 +1,18 @@
 extends Area2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+class_name Objects
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+@export var horizontal_speed = 0
+@export var vertical_speed = 35
+@onready var ray_cast_2d = $RayCast2D as RayCast2D
+@onready var animated_sprite_2d = $AnimatedSprite2D as AnimatedSprite2D
+
+func _ready():
+	set_process(true)
+
 func _process(delta):
-	pass
+	
+	position.y += delta * vertical_speed
+	
+func _on_area_entered(area):
+	queue_free()

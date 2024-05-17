@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ncuen1w70evi"]
+[gd_scene load_steps=9 format=3 uid="uid://ncuen1w70evi"]
 
 [ext_resource type="PackedScene" uid="uid://cb2qluqoi8knx" path="res://Scenes/player.tscn" id="1_8j1q5"]
 [ext_resource type="AudioStream" uid="uid://jkg2afgcten0" path="res://Assets/Sounds/Musics/happy-birthday-mr-jones-master-track-207394.mp3" id="2_68klm"]
+[ext_resource type="PackedScene" uid="uid://dtkhstjcfjh0r" path="res://Scenes/presente.tscn" id="3_hjbyo"]
+[ext_resource type="PackedScene" uid="uid://cpyrbe4u1kyau" path="res://Scenes/colher.tscn" id="3_omfb3"]
+[ext_resource type="PackedScene" uid="uid://dv4jibbn7g8vo" path="res://Scenes/refri.tscn" id="4_y31q0"]
+[ext_resource type="PackedScene" uid="uid://b6w083j4t8kmo" path="res://Scenes/UI.tscn" id="6_o7r1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i17k4"]
 size = Vector2(22.7273, 32.131)
@@ -34,3 +38,20 @@ position = Vector2(80, 208)
 stream = ExtResource("2_68klm")
 volume_db = -7.429
 autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Presente" parent="Objects" instance=ExtResource("3_hjbyo")]
+position = Vector2(127, 25)
+
+[node name="Refri" parent="Objects" instance=ExtResource("4_y31q0")]
+position = Vector2(75, 26)
+
+[node name="Colher" parent="Objects" instance=ExtResource("3_omfb3")]
+position = Vector2(26, 25)
+
+[node name="Ui" parent="." instance=ExtResource("6_o7r1q")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
